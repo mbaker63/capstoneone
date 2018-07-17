@@ -47,17 +47,27 @@
     }
   },
   "dependencies": {
+<<<<<<< HEAD
     "body-parser": "^1.18.3",
+=======
+>>>>>>> adrossi18
     "draft-js": "^0.10.5",
     "electron-compile": "^6.4.3",
     "electron-devtools-installer": "^2.1.0",
     "electron-squirrel-startup": "^1.0.0",
     "express": "^4.16.3",
+<<<<<<< HEAD
+=======
+    "express-session": "^1.15.6",
+    "material-ui": "^0.20.1",
+>>>>>>> adrossi18
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
-    "react-hot-loader": "^3.0.0-beta.6"
+    "react-hot-loader": "^3.0.0-beta.6",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1"
   },
   "devDependencies": {
     "babel-plugin-transform-async-to-generator": "^6.24.1",
