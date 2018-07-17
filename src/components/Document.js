@@ -33,7 +33,7 @@ export default class Document extends React.Component {
          <h1 style={{color:'blue'}}>Document Editor</h1><br />
          <div className='toolbar'>
          <button onMouseDown= {(e)=>this.toggleInlineStyle(e, 'BOLD')} style={{fontWeight:'bold'}}>B</button>
-         <button onMouseDown= {(e)=>this.toggleInlineStyle(e, 'ITALICS')} style={{fontStyle:'italic'}}>I</button>
+         <button onMouseDown= {(e)=>this.toggleInlineStyle(e, 'ITALIC')} style={{fontStyle:'italic'}}>I</button>
          <button onMouseDown= {(e)=>this.toggleInlineStyle(e, 'UNDERLINE')} style={{textDecoration:'underline'}}>U</button>
          <button onMouseDown= {(e)=>this.toggleInlineStyle(e, 'STRIKETHROUGH')} style={{textDecoration:'line-through'}}>S</button>
          <button onMouseDown= {(e)=>this.toggleInlineStyle(e, 'UPPERCASE')}>ABC</button>
