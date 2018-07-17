@@ -1,17 +1,17 @@
 
 //Imports needed: RUN NPM INSTALL UPON OPENING
-import passport from 'passport';
-import express from 'express';
-import session from "express-session";
-import bodyParser from "body-parser";
+var passport=require('passport');
+var express=require('express');
+var session = require('express-session');
+var bodyParser = require('body-parser')
 var LocalStrategy =  require('passport-local').Strategy;
 
 
 //Scaffolding
 var app = express();
 
-app.use('/', routes(passport));
-app.use('/', auth(passport));
+// app.use('/', routes(passport));
+// app.use('/', auth(passport));
 
 app.use(express.static("public"));
 app.use(session({ secret: "mackbenjacobandrew" }));
@@ -59,7 +59,10 @@ app.post('/login',
 )
 
 app.get('/', function(req, res){
-
+  res.send('Hello World');
 })
 
+app.listen(3000, function(){
+  console.log('LISTENING ON PORT 3000');
+})
 module.exports = app;
