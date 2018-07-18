@@ -1,3 +1,4 @@
+//LOGIN
 import React from 'react';
 
 
@@ -12,18 +13,26 @@ export default class Login extends React.Component {
   }
 
   login(){
+    console.log(this.state);
     fetch('http://localhost:3000/login', {
       method: "POST",
-      body: {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "same-origin",
+      body: JSON.stringify({
         username: this.state.username,
         password: this.state.password
-      }
+      })
     })
     .then(resp => {
+      console.log(resp)
       if (resp.status === 200){
         alert('Success!')
+        this.props.redirect('Dashboard')
       } else {
         alert('Failed!')
+        this.props.redirect('Login')
       }
     })
     .catch(err => console.log(err))
@@ -45,11 +54,9 @@ export default class Login extends React.Component {
     return (
       <div>
         <h1>Login Page</h1>
-        <form action='http://localhost:3000/login' method="post">
-          <input type='text' val='' name='username' onChange={(e) => this.onUsernameChange(e)} placeholder="Enter Username"></input>
-          <input type='password' val='' name='password' onChange={(e) => this.onPasswordChange(e)} placeholder="Enter Password"></input>
-          <input type='submit' value='submit' onClick={this.login}></input>
-        </form>
+          <input type='text'  name='username' onChange={(e) => this.onUsernameChange(e)} placeholder="Enter Username"></input>
+          <input type='password'  name='password' onChange={(e) => this.onPasswordChange(e)} placeholder="Enter Password"></input>
+          <button type="button" onClick={this.login}></button>
       </div>
     );
   }
