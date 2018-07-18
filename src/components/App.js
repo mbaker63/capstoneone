@@ -1,11 +1,13 @@
 import React from 'react';
 import Document from './Document.js';
+import Login from './Login.js'
+import { View, TextInput } from 'react-elements'
 
 export default class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      currPage: 'Document'
+      currPage: 'Login'
     }
     this.redirect = this.redirect.bind(this);
   }
@@ -18,9 +20,9 @@ export default class App extends React.Component {
 
   render() {
      return (
-       <div>
-       {this.state.currPage === "Document" ? <Document /> : null}
-       </div>
+       <View>
+       {this.state.currPage === "Login" ? <Login /> : null}
+     </View>
      );
    }
  }
