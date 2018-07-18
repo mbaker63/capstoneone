@@ -50,21 +50,18 @@ passport.deserializeUser(function(id, done) {
 
 //ROUTES
 
-app.post('/login', passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/err',
-  })
+app.post('/login', (req, res, next) => {
+  console.log(req.body);
+  passport.authenticate('local', function(err, user, info){
+    if (user) res.json({status: 200})
+    else res.status(401).json()
+  })(req,res,next)
+  }
 )
 
-app.get('/', (req, res) => {
-  res.json({success: true});
-})
-
-app.get('/err', (req, res) => {
-  res.json({success: false})
-})
 
 app.post('/register', (req, res) => {
+  console.log('first', req.body);
   models.User.findOne({username: req.body.username })
   .then(user => {
     if (!user){
@@ -80,6 +77,9 @@ app.post('/register', (req, res) => {
   .then(resp => res.json(resp))
   .catch(err => res.json({err: err}));
 })
+
+
+app.post('/')
 
 
 app.listen(3000, function(){

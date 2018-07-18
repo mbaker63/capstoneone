@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGODB_URI, function(){
 
 //USER MODEL SCHEMA
 var userSchema = new Schema({
-  //User's email
+  //Username
   username: {
     type: String,
     required: true
