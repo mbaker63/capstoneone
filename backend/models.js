@@ -34,7 +34,6 @@ var docSchema = new Schema({
   //creator of the document, saved with an ObjectId
   owner: {
     type: ObjectId,
-    required: true,
     ref: "users"
   },
   //All content history of the document, in an array
@@ -57,7 +56,7 @@ var docSchema = new Schema({
   },
   //Time the document was created
   createdTime: {
-    type: String
+    type: Date,
   },
   //Time the document was last saved
   lastEditTime: {

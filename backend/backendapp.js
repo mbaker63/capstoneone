@@ -51,9 +51,8 @@ passport.deserializeUser(function(id, done) {
 //ROUTES
 
 app.post('/login', (req, res, next) => {
-  console.log(req.body);
   passport.authenticate('local', function(err, user, info){
-    if (user) res.json({status: 200})
+    if (user) req.login(user, () => res.json({status: 200}))
     else res.status(401).json()
   })(req,res,next)
   }
@@ -61,7 +60,6 @@ app.post('/login', (req, res, next) => {
 
 
 app.post('/register', (req, res) => {
-  console.log('first', req.body);
   models.User.findOne({username: req.body.username })
   .then(user => {
     if (!user){
@@ -79,7 +77,20 @@ app.post('/register', (req, res) => {
 })
 
 
-app.post('/')
+app.post('/createDoc', (req, res) => {
+  console.log('YOOOOOOOOO', req.user.id)
+  var doc = new models.Document({
+    owner: req.user.id,
+    title: req.body.title,
+    createdTime: Date.now(),
+    collaborators: req.user.id
+  })
+  doc.save()
+  .then(resp => res.json(resp))
+  .catch(err => console.log(err))
+})
+
+// app.post('/')
 
 
 app.listen(3000, function(){
