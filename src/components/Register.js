@@ -66,11 +66,11 @@ render(){
       <form>
         <input onChange={(e) => this.onUsernameChange(e)} placeholder='Username'/>
         <br />
-        <input onChange={(e) => this.onPasswordChange(e)} placeholder='Password'/>
+        <input type='password' onChange={(e) => this.onPasswordChange(e)} placeholder='Password'/>
         <br />
-        <input onChange={(e) => this.onConPwdChange(e)} placeholder='Confirm Password'/>
-        <button type='button' onClick={this.registerUser}></button>
-        <button onClick={() => this.props.redirect('Login')}></button>
+        <input type='password' onChange={(e) => this.onConPwdChange(e)} placeholder='Confirm Password'/><br />
+        <button type='button' onClick={this.registerUser}>Register</button>
+        <button onClick={() => this.props.redirect('Login')}>Login</button>
       </form>
     </div>
   )

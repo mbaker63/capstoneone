@@ -11,7 +11,9 @@ export default class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      currPage: 'Register'
+      currPage: 'Register',
+      name: '',
+      id: ''
     }
     this.redirect = this.redirect.bind(this);
     this.renderFunc = this.renderFunc.bind(this);
@@ -24,11 +26,21 @@ export default class App extends React.Component {
     console.log(this.state.currPage)
   }
 
+  getName(name){
+    this.setState({
+      name: name
+    })
+  }
+  getId(id){
+    this.setState({
+      id: id
+    })
+  }
 
   renderFunc(){
     switch(this.state.currPage){
       case 'Document':
-        return (<Document redirect={this.redirect}/>);
+        return (<Document redirect={this.redirect} name={this.state.name}/>);
         break;
 
       case 'Login':
@@ -44,7 +56,7 @@ export default class App extends React.Component {
         break;
 
       case 'Dashboard':
-        return (<Dashboard redirect={this.redirect}/>)
+        return (<Dashboard redirect={this.redirect} getId={this.getId.bind(this)} getName={this.getName.bind(this)}/>)
     }
   }
 

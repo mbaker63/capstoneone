@@ -1,6 +1,7 @@
 import React from 'react';
 import {Editor, EditorState, RichUtils, convertToRaw, convertFromRaw} from 'draft-js';
 import ColorPicker, {colorPickerPlugin} from 'draft-js-color-picker'
+import socket from 'socket.io'
 
 const styleMap = {
   'UPPERCASE': {
@@ -61,22 +62,9 @@ export default class Document extends React.Component {
     this.state = {
       editorState: editorState,
       color: 'black',
-      name: ''
     };
 
   }
-
-
-  // componentDidMount(){
-  //   fetch()
-  //   .theN(responseJSON)
-  //   .then(response){
-  //   this.setState({
-  //     editorState: response.editorState
-  //   })
-  // }
-  // }
-
 
   toggleInlineStyle(e, inlineStyle){
     e.preventDefault();
@@ -101,7 +89,7 @@ export default class Document extends React.Component {
     return (
       <div style={{padding: 30}}>
         <h1 style={{color:'blue'}}>Document Editor</h1>
-        <h2>Document Name: {this.state.name}</h2>
+        <h2>Document Name: {this.props.name}</h2>
         <h3>Document ID: {}</h3>
         <button>Save Document</button><br /><br />
         <div className='toolbar'>
